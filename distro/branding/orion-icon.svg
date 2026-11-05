@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1A2030"/>
+      <stop offset="100%" stop-color="#0B0F1A"/>
+    </linearGradient>
+    <linearGradient id="starGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5C9DFF"/>
+      <stop offset="100%" stop-color="#2D7FF9"/>
+    </linearGradient>
+  </defs>
+  <rect x="16" y="16" width="224" height="224" rx="48" ry="48" fill="url(#bg)"/>
+  <ellipse cx="128" cy="128" rx="80" ry="32" fill="none"
+           stroke="#2D7FF9" stroke-width="2.5" stroke-opacity="0.55"
+           transform="rotate(-25 128 128)"/>
+  <path d="M128 64 L138 122 L196 128 L138 134 L128 192 L118 134 L60 128 L118 122 Z"
+        fill="url(#starGrad)"/>
+  <circle cx="92" cy="196" r="3" fill="#5C9DFF"/>
+  <circle cx="128" cy="208" r="4" fill="#5C9DFF"/>
+  <circle cx="164" cy="220" r="3" fill="#5C9DFF"/>
+</svg>

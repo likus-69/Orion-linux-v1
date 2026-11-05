@@ -1,0 +1,21 @@
+# Orion SDDM theme definition for orion-light.
+# Loaded by /usr/share/sddm/themes/orion-light/.
+
+[Theme]
+Name=Orion Light
+Description=Daytime theme — bright surfaces, darker accent. For office use.
+Author=Orion OS Project
+Type=qml
+Screenshot=preview.png
+MainScript=Main.qml
+ConfigFile=theme.conf
+ThemeDir=/usr/share/sddm/themes/orion-light
+
+# Token values for the SDDM QML theme.
+[Colors]
+surface0=#F7F9FC
+surface1=#FFFFFF
+surface2=#FFFFFF
+accent=#0F6FE8
+fg_primary=#1A1F2E
+fg_secondary=#4A5468

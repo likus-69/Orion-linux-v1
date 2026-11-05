@@ -1,0 +1,97 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-FileCopyrightText: 2026 Orion OS Project Contributors
+#
+# .github/workflows/build-iso.yml — builds the Orion OS ISO on an Arch
+# Linux runner. Uses the archlinux Docker image as the runner environment.
+#
+# This job requires:
+#   - `archiso` to be installed
+#   - the Orion package repository to be pre-built at distro/repositories/x86_64/
+#   - a signing key for the Orion repository (in CI secrets) if --no-sign is not used
+
+name: Build ISO
+
+on:
+  push:
+    branches: [main, 'release/**']
+    tags: ['v*']
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build-desktop:
+    runs-on: ubuntu-latest
+    container: archlinux:latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update system
+        run: |
+          pacman -Syu --noconfirm
+          pacman -S --needed --noconfirm base-devel git cmake ninja \
+            qt6-base qt6-declarative qt6-wayland qt6-tools qt6-shadertools \
+            extra-cmake-modules layer-shell-qt
+
+      - name: Build orion-framework
+        run: |
+          cd desktop/orion-framework
+          cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_TESTING=OFF
+          cmake --build build -j$(nproc)
+          ninja -C build install
+
+      - name: Build all Orion desktop components
+        run: ./scripts/build-desktop.sh --staging ./stage
+
+      - name: Upload desktop components
+        uses: actions/upload-artifact@v4
+        with:
+          name: orion-desktop-binaries
+          path: stage/
+
+  build-iso:
+    needs: build-desktop
+    runs-on: ubuntu-latest
+    container: archlinux:latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update system
+        run: |
+          pacman -Syu --noconfirm
+          pacman -S --needed --noconfirm base-devel git archiso calamares \
+            python python-pytest python-cairosvg
+
+      - name: Download desktop binaries
+        uses: actions/download-artifact@v4
+        with:
+          name: orion-desktop-binaries
+          path: stage/
+
+      - name: Generate branding assets
+        run: python3 scripts/generate-branding.py
+
+      - name: Generate themes
+        run: python3 scripts/generate-themes.py
+
+      - name: Build ISO
+        run: ./scripts/build-iso.sh --no-sign
+        continue-on-error: false
+
+      - name: Compute ISO checksums
+        run: |
+          cd distro/archiso/out
+          sha256sum *.iso > SHA256SUMS
+          sha512sum *.iso > SHA512SUMS
+
+      - name: Upload ISO
+        uses: actions/upload-artifact@v4
+        with:
+          name: orion-os-iso
+          path: |
+            distro/archiso/out/*.iso
+            distro/archiso/out/*.sha256
+            distro/archiso/out/*.sha512
+            distro/archiso/out/SHA256SUMS
+            distro/archiso/out/SHA512SUMS
+            distro/archiso/out/build-info.json

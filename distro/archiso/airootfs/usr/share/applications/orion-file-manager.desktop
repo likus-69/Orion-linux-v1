@@ -1,0 +1,17 @@
+# /usr/share/applications/orion-file-manager.desktop
+
+[Desktop Entry]
+Name=Orion Files
+Name[en_US]=Orion Files
+GenericName=File Manager
+GenericName[en_US]=File Manager
+Comment=Browse and manage files
+Comment[en_US]=Browse and manage files
+Exec=orion-file-manager %U
+Icon=orion-os-files
+Terminal=false
+Type=Application
+Categories=System;FileManager;Utility;Core;
+StartupNotify=true
+Keywords=files;file;manager;browser;explorer;
+MimeType=inode/directory;

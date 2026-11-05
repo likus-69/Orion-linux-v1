@@ -1,0 +1,24 @@
+# /usr/lib/systemd/user/orion-panel.service
+#
+# The Orion panel (taskbar). Started by the user's graphical session.
+# Restartable so a crash does not lose the taskbar.
+
+[Unit]
+Description=Orion Panel (taskbar)
+After=plasma-kwin_wayland.service
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/lib/orion/orion-panel
+Restart=on-failure
+RestartSec=2
+TimeoutStopSec=5
+# The panel runs under the user's Wayland session.
+Environment=QT_QPA_PLATFORM=wayland
+Environment=QT_LOGGING_RULES=orion.panel=true
+Environment=ORION_DESKTOP=1
+
+[Install]
+WantedBy=graphical-session.target

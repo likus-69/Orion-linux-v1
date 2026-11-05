@@ -1,0 +1,27 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Maintainer: Orion OS Project <likus-69+release@users.noreply.github.com>
+
+pkgname=orion-settings
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="Orion OS unified settings application (7 categories)"
+arch=('x86_64')
+url="https://github.com/likus-69/Orion-linux-v1.1/"
+license=('GPL-3.0-or-later')
+depends=('qt6-base' 'qt6-declarative' 'qt6-wayland' 'orion-framework' 'accountsservice' 'networkmanager' 'udisks2' 'xdg-utils' 'bluez' 'cups' 'ufw' 'util-linux' 'pacman' 'wlr-randr')
+makedepends=('cmake' 'ninja' 'extra-cmake-modules' 'qt6-tools')
+source=("git+https://github.com/likus-69/Orion-linux-v1.1.git")
+sha256sums=('SKIP')
+
+build() {
+    cd "$srcdir/Orion-linux-v1.1/desktop/settings"
+    cmake -B build -G Ninja \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr
+    cmake --build build -j"$(nproc)"
+}
+
+package() {
+    cd "$srcdir/Orion-linux-v1.1/desktop/settings"
+    DESTDIR="$pkgdir" cmake --install build
+}

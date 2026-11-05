@@ -1,0 +1,25 @@
+# /usr/lib/systemd/user/orion-update-manager.service
+#
+# Background service that checks for available updates every 4 hours and
+# surfaces notifications via the Orion Notifications daemon. The actual
+# update is performed via PackageKit, requiring the user's authorization
+# via polkit.
+
+[Unit]
+Description=Orion Update Manager
+After=graphical-session.target
+PartOf=graphical-session.target
+ConditionUser=!@system
+
+[Service]
+Type=simple
+ExecStart=/usr/lib/orion/orion-update-manager --daemon
+Restart=on-failure
+RestartSec=10
+Environment=QT_QPA_PLATFORM=wayland
+Environment=QT_LOGGING_RULES=orion.updatemanager=true
+Environment=ORION_DESKTOP=1
+Environment=ORION_UPDATE_CHECK_INTERVAL=14400
+
+[Install]
+WantedBy=graphical-session.target

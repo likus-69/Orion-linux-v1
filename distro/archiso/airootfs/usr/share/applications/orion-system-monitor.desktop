@@ -1,0 +1,16 @@
+# /usr/share/applications/orion-system-monitor.desktop
+
+[Desktop Entry]
+Name=Orion System Monitor
+Name[en_US]=Orion System Monitor
+GenericName=System Monitor
+GenericName[en_US]=System Monitor
+Comment=View CPU, memory, disk, and network usage
+Comment[en_US]=View CPU, memory, disk, and network usage
+Exec=orion-system-monitor
+Icon=orion-os-monitor
+Terminal=false
+Type=Application
+Categories=System;Monitor;Utility;
+StartupNotify=true
+Keywords=monitor;system;performance;cpu;memory;task;

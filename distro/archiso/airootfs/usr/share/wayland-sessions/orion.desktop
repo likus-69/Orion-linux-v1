@@ -1,0 +1,16 @@
+# /usr/share/wayland-sessions/orion.desktop
+#
+# XDG Wayland session entry for the Orion desktop. SDDM (and any other
+# display manager that reads wayland-sessions) will show "Orion" as an
+# option at login.
+
+[Desktop Entry]
+Name=Orion
+Name[en_US]=Orion
+Comment=The Orion Desktop
+Comment[en_US]=The Orion Desktop
+Exec=env XDG_CURRENT_DESKTOP=orion XDG_SESSION_TYPE=wayland QT_QPA_PLATFORM=wayland /usr/lib/orion/orion-shell
+Type=Application
+DesktopNames=orion
+Keywords=launch;orion;desktop;session;
+X-GDM-SessionRegisters=true

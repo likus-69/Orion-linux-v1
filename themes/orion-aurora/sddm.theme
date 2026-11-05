@@ -1,0 +1,21 @@
+# Orion SDDM theme definition for orion-aurora.
+# Loaded by /usr/share/sddm/themes/orion-aurora/.
+
+[Theme]
+Name=Orion Aurora
+Description=Emerald accent on dark green. For variety.
+Author=Orion OS Project
+Type=qml
+Screenshot=preview.png
+MainScript=Main.qml
+ConfigFile=theme.conf
+ThemeDir=/usr/share/sddm/themes/orion-aurora
+
+# Token values for the SDDM QML theme.
+[Colors]
+surface0=#0A1A14
+surface1=#0F2419
+surface2=#162B22
+accent=#2FB57C
+fg_primary=#EAF2EE
+fg_secondary=#9CB8AD

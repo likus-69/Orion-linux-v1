@@ -1,0 +1,50 @@
+{
+  "name": "orion-high-contrast",
+  "description": "WCAG AAA compliant \u2014 pure black/white, no blur, no gradients, no shadows.",
+  "accent_default": "blue",
+  "accent_presets": [
+    "blue",
+    "cyan",
+    "violet",
+    "magenta",
+    "amber",
+    "emerald",
+    "crimson"
+  ],
+  "surface": {
+    "0": "#000000",
+    "1": "#000000",
+    "2": "#000000",
+    "3": "#000000",
+    "4": "#1A1A1A"
+  },
+  "foreground": {
+    "primary": "#FFFFFF",
+    "secondary": "#E0E0E0",
+    "tertiary": "#C0C0C0",
+    "disabled": "#707070",
+    "inverse": "#000000"
+  },
+  "accent": {
+    "50": "#FFFFFF",
+    "100": "#FFFFFF",
+    "300": "#FFFFFF",
+    "500": "#FFFFFF",
+    "700": "#FFFFFF",
+    "900": "#FFFFFF"
+  },
+  "semantic": {
+    "success": "#00FF66",
+    "warning": "#FFCC00",
+    "danger": "#FF3030",
+    "info": "#FFFFFF"
+  },
+  "border": {
+    "subtle": "#FFFFFF",
+    "default": "#FFFFFF",
+    "strong": "#FFFFFF",
+    "focus": "#FFFFFF"
+  },
+  "font_family": "Inter",
+  "font_mono": "JetBrains Mono"
+}

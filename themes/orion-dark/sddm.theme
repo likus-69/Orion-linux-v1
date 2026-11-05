@@ -1,0 +1,21 @@
+# Orion SDDM theme definition for orion-dark.
+# Loaded by /usr/share/sddm/themes/orion-dark/.
+
+[Theme]
+Name=Orion Dark
+Description=Default theme — deep navy surfaces, blue accent. The classic Orion look.
+Author=Orion OS Project
+Type=qml
+Screenshot=preview.png
+MainScript=Main.qml
+ConfigFile=theme.conf
+ThemeDir=/usr/share/sddm/themes/orion-dark
+
+# Token values for the SDDM QML theme.
+[Colors]
+surface0=#0B0F1A
+surface1=#131826
+surface2=#1A2030
+accent=#2D7FF9
+fg_primary=#F2F4F8
+fg_secondary=#B6BDD0

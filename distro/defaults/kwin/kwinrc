@@ -1,0 +1,40 @@
+# /etc/kwinrc (Orion OS default)
+# Read by KWin for compositor, window management, and shell configuration.
+
+[Compositing]
+# Compositor backend: OpenGL 2.1+ (Wayland native).
+Backend=OpenGL
+GLCore=false
+Enabled=true
+# Latency: prefer lower input latency.
+LatencyPolicy=LatencyExtremelyLow
+# Animation speed (1.0 = full speed; user can lower for accessibility).
+AnimationSpeed=1.0
+
+[Windows]
+# Border size: small (matches design system's radius.md).
+BorderSize=Normal
+# Focus policy: click to focus (familiar to Windows users).
+FocusPolicy=ClickFocus
+# Raise on click.
+RaiseOnClick=true
+# Auto-raise delay (ms). -1 = disabled.
+AutoRaiseInterval=-1
+
+[Tiling]
+# Disable KWin's built-in tiling; Orion handles layouts via Snap.
+enabled=false
+
+[Wayland]
+# Input method module: use fcitx5 if installed, otherwise empty.
+InputMethod=/usr/share/applications/org.fcitx.Fcitx5.desktop
+# Allow clients to set their own cursor.
+AllowTearing=false
+
+[Effect-windowview]
+# Alt+Tab: show window thumbnails.
+LayoutMode=2
+
+[TabBox]
+# Show desktops, not activities.
+DesktopMode=1

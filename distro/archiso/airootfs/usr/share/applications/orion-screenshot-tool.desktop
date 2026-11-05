@@ -1,0 +1,16 @@
+# /usr/share/applications/orion-screenshot-tool.desktop
+
+[Desktop Entry]
+Name=Orion Screenshot
+Name[en_US]=Orion Screenshot
+GenericName=Screenshot
+GenericName[en_US]=Screenshot
+Comment=Capture screen, window, or region screenshots
+Comment[en_US]=Capture screen, window, or region screenshots
+Exec=orion-screenshot-tool
+Icon=orion-os-screenshot
+Terminal=false
+Type=Application
+Categories=Graphics;Utility;
+StartupNotify=false
+Keywords=screenshot;capture;screen;

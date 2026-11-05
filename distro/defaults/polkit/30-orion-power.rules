@@ -1,0 +1,21 @@
+// /etc/polkit-1/rules.d/30-orion-power.rules
+// Power management policies for Orion.
+
+polkit.addRule(function(action, subject) {
+    // Any local active user can suspend, hibernate, reboot, power off, and
+    // lock the session. No authentication prompt for these.
+    if (subject.local && subject.active) {
+        switch (action.id) {
+            case "org.freedesktop.login1.suspend":
+            case "org.freedesktop.login1.suspend-multiple-sessions":
+            case "org.freedesktop.login1.hibernate":
+            case "org.freedesktop.login1.hibernate-multiple-sessions":
+            case "org.freedesktop.login1.reboot":
+            case "org.freedesktop.login1.reboot-multiple-sessions":
+            case "org.freedesktop.login1.power-off":
+            case "org.freedesktop.login1.power-off-multiple-sessions":
+                return polkit.Result.YES;
+        }
+    }
+    return polkit.Result.NOT_HANDLED;
+});

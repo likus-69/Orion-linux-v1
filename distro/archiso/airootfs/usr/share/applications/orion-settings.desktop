@@ -1,0 +1,16 @@
+# /usr/share/applications/orion-settings.desktop
+
+[Desktop Entry]
+Name=Orion Settings
+Name[en_US]=Orion Settings
+GenericName=Settings
+GenericName[en_US]=Settings
+Comment=Configure the Orion OS desktop
+Comment[en_US]=Configure the Orion OS desktop
+Exec=orion-settings
+Icon=orion-os-settings
+Terminal=false
+Type=Application
+Categories=System;Settings;DesktopSettings;
+StartupNotify=true
+Keywords=settings;configuration;orion;

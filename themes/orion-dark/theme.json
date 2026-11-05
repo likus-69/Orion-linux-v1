@@ -1,0 +1,50 @@
+{
+  "name": "orion-dark",
+  "description": "Default theme \u2014 deep navy surfaces, blue accent. The classic Orion look.",
+  "accent_default": "blue",
+  "accent_presets": [
+    "blue",
+    "cyan",
+    "violet",
+    "magenta",
+    "amber",
+    "emerald",
+    "crimson"
+  ],
+  "surface": {
+    "0": "#0B0F1A",
+    "1": "#131826",
+    "2": "#1A2030",
+    "3": "#222B3F",
+    "4": "#2C3650"
+  },
+  "foreground": {
+    "primary": "#F2F4F8",
+    "secondary": "#B6BDD0",
+    "tertiary": "#7E8699",
+    "disabled": "#4A5066",
+    "inverse": "#0B0F1A"
+  },
+  "accent": {
+    "50": "#E6F0FF",
+    "100": "#C2D8FF",
+    "300": "#5C9DFF",
+    "500": "#2D7FF9",
+    "700": "#1E5BB8",
+    "900": "#0F3576"
+  },
+  "semantic": {
+    "success": "#3FBF7F",
+    "warning": "#F2A93B",
+    "danger": "#E14B4B",
+    "info": "#2D7FF9"
+  },
+  "border": {
+    "subtle": "#222B3F",
+    "default": "#2C3650",
+    "strong": "#3D4866",
+    "focus": "#2D7FF9"
+  },
+  "font_family": "Inter",
+  "font_mono": "JetBrains Mono"
+}

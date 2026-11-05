@@ -1,0 +1,210 @@
+# Orion OS — packages installed in the live ISO and the installed system
+#
+# This file is consumed by mkarchiso (matches packages.x86_64). Lines starting
+# with '#' are comments; one package per line. Groups use the 'packagegroup'
+# syntax (e.g. '@packagegroup'). Relative paths starting with './' are local
+# package lists sourced from the same directory.
+
+# ---------------------------------------------------------------------------
+# Base system — required to boot and run pacman
+# ---------------------------------------------------------------------------
+linux
+linux-firmware
+linux-firmware-marvell
+base
+base-devel
+
+# Filesystem tools
+btrfs-progs
+dosfstools
+e2fsprogs
+exfatprogs
+f2fs-tools
+ntfs-3g
+xfsprogs
+squashfs-tools
+
+# Bootchain
+systemd
+systemd-sysvcompat
+dracut
+mkinitcpio
+busybox
+efibootmgr
+sbctl
+
+# Network (live + installed)
+networkmanager
+network-manager-applet
+wireless_tools
+wpa_supplicant
+iwd
+modemmanager
+mobile-broadband-provider-info
+openresolv
+
+# Audio (live + installed)
+pipewire
+pipewire-pulse
+pipewire-alsa
+pipewire-jack
+pipewire-zeroconf
+wireplumber
+sof-firmware
+alsa-utils
+alsa-plugins
+pulseaudio-alsa
+
+# Bluetooth
+bluez
+bluez-utils
+
+# Display / Wayland / Qt
+wayland
+xorg-xwayland
+qt6-base
+qt6-declarative
+qt6-wayland
+qt6-shadertools
+qt6-tools
+qt6-svg
+extra-cmake-modules
+layer-shell-qt
+kwin
+plasma-desktop
+plasma-workspace
+plasma-pa
+plasma-nm
+plasma-systemmonitor
+sddm
+sddm-theme-orion
+kwallet
+kwallet-pam
+
+# Themes / fonts
+noto-fonts
+noto-fonts-cjk
+noto-fonts-emoji
+ttf-jetbrains-mono
+inter-font
+breeze
+breeze-icons
+papirus-icon-theme
+orion-themes
+orion-icons
+orion-wallpapers
+
+# XDG and desktop integration
+xdg-utils
+xdg-desktop-portal
+xdg-desktop-portal-kde
+xdg-user-dirs
+
+# Polkit + package management
+polkit
+packagekit
+pacman-contrib
+archlinux-keyring
+reflector
+pacutils
+
+# User-facing apps (default set, Orion-branded where possible)
+firefox
+dolphin
+konsole
+kate
+gwenview
+spectacle
+ark
+okular
+vlc
+mpv
+ffmpeg
+calc
+kcalc
+gedit
+filelight
+
+# Orion desktop components (from local Orion repo)
+orion-framework
+orion-shell
+orion-panel
+orion-start-menu
+orion-settings
+orion-file-manager
+orion-welcome-center
+orion-software-center
+orion-notifications
+orion-quick-settings
+orion-system-monitor
+orion-update-manager
+orion-screenshot-tool
+orion-search
+orion-lockscreen
+orion-branding
+orion-defaults
+orion-keyring
+
+# Installer
+calamares
+calamares-branding-orion
+calamares-config-orion
+
+# Hardware tools
+hwinfo
+lshw
+dmidecode
+inxi
+usbutils
+pciutils
+smartmontools
+
+# Power management
+power-profiles-daemon
+upower
+
+# Time / locale / internationalization
+chrony
+tzdata
+
+# Misc system utilities
+bash-completion
+man-db
+man-pages
+texinfo
+diffutils
+less
+nano
+vim
+which
+openssh
+sudo
+htop
+btop
+bat
+fd
+ripgrep
+eza
+fzf
+tree
+unzip
+zip
+p7zip
+rsync
+wget
+curl
+git
+
+# Snapshots / recovery
+snapper
+snapper-gui
+btrfs-assistant
+
+# Flatpak (for sandboxed third-party apps)
+flatpak
+
+# Linux headers (so DKMS modules build for NVIDIA / Broadcom post-install)
+linux-headers
+
+# Plymouth (boot splash)
+plymouth
