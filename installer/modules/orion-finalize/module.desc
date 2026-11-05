@@ -1,8 +1,0 @@
-# SPDX-License-Identifier: GPL-3.0-or-later
-# installer/modules/orion-finalize/module.desc
-
----
-type:       shellprocess
-name:       orion-finalize
-no_chroot:  false
-command:    /usr/bin/true
