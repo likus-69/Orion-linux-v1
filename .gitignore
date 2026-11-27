@@ -57,8 +57,14 @@ airootfs.sha256
 # ----- Packaging -----
 *.pkg.tar.zst
 *.pkg.tar.zst.sig
-src/
-pkg/
+# Ignore the `src/` and `pkg/` working directories that makepkg creates
+# inside each packaging/orion-*/ PKGBUILD directory during a build.
+# NOTE: do NOT use a bare `src/` pattern here — that would silently
+# exclude the source directories of every desktop component
+# (e.g. desktop/orion-framework/src/) which is exactly what the C++
+# sources live under. Scope it to packaging/ only.
+packaging/*/src/
+packaging/*/pkg/
 
 # ----- Logs and runtime -----
 *.log

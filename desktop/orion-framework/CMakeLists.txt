@@ -38,7 +38,6 @@ qt_add_qml_module(orion-framework
     URI org.orion.framework
     VERSION 1.0
     QML_FILES
-        qml/Theme.qml
         qml/OrionButton.qml
         qml/OrionCard.qml
         qml/OrionListRow.qml
@@ -53,6 +52,12 @@ qt_add_qml_module(orion-framework
         qml/OrionMenu.qml
         qml/OrionTabBar.qml
         qml/OrionBusy.qml
+    # NOTE: qml/Theme.qml is intentionally NOT in QML_FILES. The Theme QML
+    # singleton is implemented in C++ (src/theme.cpp) and registered via
+    # QML_SINGLETON + QML_NAMED_ELEMENT(Theme). Having both a QML-defined
+    # Theme singleton (pragma Singleton) and the C++ one would conflict at
+    # QML load time. The qml/Theme.qml file remains on disk as documentation
+    # only; it is not compiled into the module.
     RESOURCES
         data/tokens.json
 )
