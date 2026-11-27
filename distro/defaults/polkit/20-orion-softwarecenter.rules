@@ -4,23 +4,30 @@
 // components on the installed system. (The live ISO uses a more permissive
 // rule in 10-orion-live.rules; this rule is the production default.)
 //
-// These rules grant wheel members the right to:
-//   - install / remove / update packages via PackageKit (cached for 15 min)
+// These rules let wheel members (local, active session) perform privileged
+// operations after confirming with THEIR OWN password:
+//   - install / remove / update packages via PackageKit (cached briefly)
 //   - change the system timezone, hostname, and locale via Orion Settings
-//   - mount / format disks via udisks2 (cached for 15 min)
+//   - mount / format disks via udisks2 (cached briefly)
+// AUR builds ask for the password every time (never cached).
 //
-// Non-wheel users get auth_admin (prompt) for read operations and
-// auth_admin_keep for the install/remove/update operations.
+// Non-wheel users must authenticate as an administrator.
+//
+// SECURITY NOTE: never return polkit.Result.YES for install/remove/update,
+// disk formatting or AUR actions. YES means no authentication at all, so any
+// process in a wheel user's session could install packages (root code
+// execution via install scriptlets) or wipe disks silently.
+// tests/security/test_polkit_rules.py enforces this.
 
 polkit.addRule(function(action, subject) {
     var isWheel = subject.isInGroup("wheel");
     var isAdmin = subject.local && subject.active && isWheel;
 
     function allow_keep() {
-        return isAdmin ? polkit.Result.YES : polkit.Result.AUTH_ADMIN_KEEP;
+        return isAdmin ? polkit.Result.AUTH_SELF_KEEP : polkit.Result.AUTH_ADMIN_KEEP;
     }
     function allow_once() {
-        return isAdmin ? polkit.Result.YES : polkit.Result.AUTH_ADMIN;
+        return isAdmin ? polkit.Result.AUTH_SELF : polkit.Result.AUTH_ADMIN;
     }
 
     switch (action.id) {
